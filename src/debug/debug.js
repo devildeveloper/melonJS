@@ -46,15 +46,6 @@
 		renderCollisionGrid : false,
 
 		/**
-		 * render dirty region/rectangle<br>
-		 * default value : false<br>
-		 * (feature must be enabled through the me.sys.dirtyRegion flag)
-		 * @type Boolean
-		 * @memberOf me.debug
-		 */
-		renderDirty : false,
-		
-		/**
 		 * render entities current velocity<br>
 		 * default value : false<br>
 		 * @type Boolean

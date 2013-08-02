@@ -338,8 +338,15 @@
 		 * @ignore		
 		 */
 		function onDeviceMotion(e) {
-			// Accelerometer information  
-			obj.accel = e.accelerationIncludingGravity;
+		    if (e.reading) {
+                // For Windows 8 devices
+		        obj.accel.x = e.reading.accelerationX;
+		        obj.accel.y = e.reading.accelerationY;
+		        obj.accel.z = e.reading.accelerationZ;
+		    } else {
+		        // Accelerometer information
+		        obj.accel = e.accelerationIncludingGravity;
+		    }
 		}
 
 		/*---------------------------------------------
@@ -616,8 +623,8 @@
 			y -= offset.top;
 			var scale = me.sys.scale;
 			if (scale.x != 1.0 || scale.y != 1.0) {
-				x/=scale.x;
-				y/=scale.y;
+				x/=(scale.x / me.video.getDevicePixelRatio());
+				y/=(scale.y / me.video.getDevicePixelRatio());
 			}
 			return new me.Vector2d(x, y);
 		};
@@ -795,16 +802,29 @@
 		 * @function
 		 * @return {boolean} false if not supported by the device
 		 */
-		obj.watchAccelerometer = function() {
-			if (window.sys.gyro) {
-				if (!accelInitialized) {
-					// add a listener for the mouse
-					window.addEventListener('devicemotion', onDeviceMotion, false);
-					accelInitialized = true;
-				}
-				return true;
-			}
-			return false;
+		obj.watchAccelerometer = function () {
+		    if (me.sys.hasAccelerometer) {
+		        if (!accelInitialized) {
+		            if (typeof(Windows) == 'undefined') {
+		                // add a listener for the devicemotion event
+		                window.addEventListener('devicemotion', onDeviceMotion, false);
+		            } else {
+		                // On Windows 8 Device
+		                var accelerometer = Windows.Devices.Sensors.Accelerometer.getDefault();
+		                if (accelerometer) {
+		                    // Capture event at regular intervals
+		                    var minInterval = accelerometer.minimumReportInterval;
+		                    var Interval = minInterval >= 16 ? minInterval : 25;
+		                    accelerometer.reportInterval = Interval;
+
+		                    accelerometer.addEventListener('readingchanged', onDeviceMotion, false);
+		                }
+		            }
+		            accelInitialized = true;
+		        }
+		        return true;
+		    }
+		    return false;
 		};
 		
 		/**
@@ -815,14 +835,21 @@
 		 * @function
 		 */
 		obj.unwatchAccelerometer = function() {
-			if (accelInitialized) {
-				// add a listener for the mouse
-				window.removeEventListener('devicemotion', onDeviceMotion, false);
-				accelInitialized = false;
-			}
+		    if (accelInitialized) {
+		        if (typeof Windows == 'undefined') {
+		            // add a listener for the mouse
+		            window.removeEventListener('devicemotion', onDeviceMotion, false);
+		        } else {
+                    // On Windows 8 Devices
+		            var accelerometer = Windows.Device.Sensors.Accelerometer.getDefault();
+
+		            accelerometer.removeEventListener('readingchanged', onDeviceMotion, false);
+		        }
+		        accelInitialized = false;
+		    }
 		};
 
-		// return our object
+	    // return our object
 		return obj;
 
 	})();

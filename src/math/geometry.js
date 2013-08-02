@@ -54,11 +54,7 @@
 		 * @function
 		 * @param {Number} x
 		 * @param {Number} y
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
-		 * @return {me.Venctor2d} Reference to this object for method chaining
->>>>>>> master
+		 * @return {me.Vector2d} Reference to this object for method chaining
 		 */
 		set : function(x, y) {
 			this.x = x;
@@ -68,14 +64,10 @@
 
 		/**
 		 * set the Vector x and y properties to 0
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
 		 * @name setZero
 		 * @memberOf me.Vector2d
 		 * @function
-		 * @return {me.Venctor2d} Reference to this object for method chaining
->>>>>>> master
+		 * @return {me.Vector2d} Reference to this object for method chaining
 		 */
 		setZero : function() {
 			return this.set(0, 0);
@@ -87,11 +79,7 @@
 		 * @memberOf me.Vector2d
 		 * @function
 		 * @param {me.Vector2d} v
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
-		 * @return {me.Venctor2d} Reference to this object for method chaining
->>>>>>> master
+		 * @return {me.Vector2d} Reference to this object for method chaining
 		 */
 		setV : function(v) {
 			this.x = v.x;
@@ -105,11 +93,7 @@
 		 * @memberOf me.Vector2d
 		 * @function
 		 * @param {me.Vector2d} v
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
-		 * @return {me.Venctor2d} Reference to this object for method chaining
->>>>>>> master
+		 * @return {me.Vector2d} Reference to this object for method chaining
 		 */
 		add : function(v) {
 			this.x += v.x;
@@ -123,11 +107,7 @@
 		 * @memberOf me.Vector2d
 		 * @function
 		 * @param {me.Vector2d} v
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
-		 * @return {me.Venctor2d} Reference to this object for method chaining
->>>>>>> master
+		 * @return {me.Vector2d} Reference to this object for method chaining
 		 */
 		sub : function(v) {
 			this.x -= v.x;
@@ -141,11 +121,7 @@
 		 * @memberOf me.Vector2d
 		 * @function
 		 * @param {me.Vector2d} v
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
-		 * @return {me.Venctor2d} Reference to this object for method chaining
->>>>>>> master
+		 * @return {me.Vector2d} Reference to this object for method chaining
 		 */
 		scale : function(v) {
 			this.x *= v.x;
@@ -159,11 +135,7 @@
 		 * @memberOf me.Vector2d
 		 * @function
 		 * @param {Number} value
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
-		 * @return {me.Venctor2d} Reference to this object for method chaining
->>>>>>> master
+		 * @return {me.Vector2d} Reference to this object for method chaining
 		 */
 		div : function(n) {
 			this.x /= n;
@@ -173,14 +145,10 @@
 
 		/**
 		 * Update this vector values to absolute values
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
 		 * @name abs
 		 * @memberOf me.Vector2d
 		 * @function
-		 * @return {me.Venctor2d} Reference to this object for method chaining
->>>>>>> master
+		 * @return {me.Vector2d} Reference to this object for method chaining
 		 */
 		abs : function() {
 			if (this.x < 0)
@@ -210,11 +178,7 @@
 		 * @function
 		 * @param {Number} low
 		 * @param {Number} high
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
 		 * @return {me.Vector2d} Reference to this object for method chaining
->>>>>>> master
 		 */
 		clampSelf : function(low, high) {
 			this.x = this.x.clamp(low, high);
@@ -228,11 +192,7 @@
 		 * @memberOf me.Vector2d
 		 * @function
 		 * @param {me.Vector2d} v
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
 		 * @return {me.Vector2d} Reference to this object for method chaining
->>>>>>> master
 		 */
 		minV : function(v) {
 			this.x = this.x < v.x ? this.x : v.x;
@@ -246,11 +206,7 @@
 		 * @memberOf me.Vector2d
 		 * @function
 		 * @param {me.Vector2d} v
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
 		 * @return {me.Vector2d} Reference to this object for method chaining
->>>>>>> master
 		 */
 		maxV : function(v) {
 			this.x = this.x > v.x ? this.x : v.x;
@@ -271,14 +227,10 @@
 		
 		/**
 		 * Floor this vector values
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
 		 * @name floorSelf
 		 * @memberOf me.Vector2d
 		 * @function
 		 * @return {me.Vector2d} Reference to this object for method chaining
->>>>>>> master
 		 */
 		floorSelf : function() {
 			this.x = ~~this.x;
@@ -299,14 +251,10 @@
 		
 		/**
 		 * Ceil this vector values
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
 		 * @name ceilSelf
 		 * @memberOf me.Vector2d
 		 * @function
 		 * @return {me.Vector2d} Reference to this object for method chaining
->>>>>>> master
 		 */
 		ceilSelf : function() {
 			this.x = Math.ceil(this.x);
@@ -327,14 +275,10 @@
 
 		/**
 		 * Negate this vector values
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
 		 * @name negateSelf
 		 * @memberOf me.Vector2d
 		 * @function
 		 * @return {me.Vector2d} Reference to this object for method chaining
->>>>>>> master
 		 */
 		negateSelf : function() {
 			this.x = -this.x;
@@ -348,11 +292,7 @@
 		 * @memberOf me.Vector2d
 		 * @function
 		 * @param {me.Vector2d} v
-<<<<<<< HEAD
-		 * @return Reference to this object for method chaining
-=======
 		 * @return {me.Vector2d} Reference to this object for method chaining
->>>>>>> master
 		 */
 		copy : function(v) {
 			this.x = v.x;
